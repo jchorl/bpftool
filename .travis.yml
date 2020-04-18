@@ -1,0 +1,18 @@
+arch:
+- arm64
+os: linux
+dist: bionic
+language: shell
+script:
+- make image
+deploy:
+- provider: script
+  script: bash deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD
+  on:
+    branch: master
+env:
+  global:
+  - BUILDARCH=armv71
+  - ARCHIMAGE=jchorl/bpftool:latest
+  - DOCKER_USERNAME=jchorl
+  - secure: QRs/LwvpEFxOIJwhCxEK0UBDdQ/CombNVtZSZ+NmEk4eF6OAwzySYqsAMC2OVq54yXnf9ZBcnENaeggmfkjHQuEcNrZ8MQqci9Hd4SV12CObRmn5IdFA27+OGaleGLCoqbdPhmnHPsoLze6hn9Gt3KnhkuTALWCT7Nm13C/gxAis2lOoLFPLSln6BBTLB+2M+YgAZB8VwX4NQ4oWK3aEFGHbfDJurQ72YdzEeSOxvq+BLbFhIPiGwzVAvJM3CiRDN1RspR3AiPGJdd55aZGG7EnK8Mq5T55Q5HalyougKsc/iY7uGilXXQOZlqW+dQFehMZwSgFNr7l7+VrmqT3FkFXL0qwaZy5TXSWTVw0RNiv3HO3mJ5cFHTOeewpQGWubBZdgJ+DD+qkM1nIfwUK1DCOioaOBsHoqKCywNWEmAPo1qiv74JiBtQP2qS4XJwU4fAtIq3kuhvSU0hTdSpa9ATX2YRhNFtHPshwTjGi68uFv1iUpQEEBP+PmLpyjiMZLCluums10+a22mhzmtwsDgv0YKFcm2vep7CBIK8OE41wHV0pSLizzS4jpBmU9sw9vzZyJi4Bl1wbro7/z6m4AoE6ZIrGaSKRNp1KqBUDgXak4qIQI3Fap8RiGIk7svhzQ5uhjsseozc9yOCRnNnwfTqyl2M/7DDoKLhFLXGMwHGw=

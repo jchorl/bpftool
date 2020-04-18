@@ -22,6 +22,9 @@ endif
 ifeq ($(BUILDARCH),x86_64)
         BUILDARCH=amd64
 endif
+ifeq ($(BUILDARCH),armv71)
+        BUILDARCH=arm
+endif
 
 # unless otherwise set, I am building for my own architecture, i.e. not cross-compiling
 ARCH ?= $(BUILDARCH)
@@ -32,6 +35,9 @@ ifeq ($(ARCH),aarch64)
 endif
 ifeq ($(ARCH),x86_64)
         override ARCH=amd64
+endif
+ifeq ($(ARCH),armv71)
+        override ARCH=arm
 endif
 
 ###############################################################################
