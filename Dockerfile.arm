@@ -32,6 +32,9 @@ apt-get clean
 
 WORKDIR /tmp
 
+RUN touch dummy.hxx
+RUN cpp -dM ./dummy.hxx
+
 RUN \
 git clone --depth 1 -b $KERNEL_REF $KERNEL_REPO && \
 cd linux/tools/bpf/bpftool/ && \
